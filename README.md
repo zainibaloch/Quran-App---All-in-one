@@ -1,163 +1,156 @@
-## Quran-App — All-in-one
+# 📖 Quran-App — All-in-One
 
-[![npm version](https://img.shields.io/npm/v/your-package-name.svg?style=flat)]() [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)]()
-
-An **all-in-one**, **Next.js 13** Quran web application built from the ground up with **TypeScript**, **Tailwind CSS**, and the official **AlQuran Cloud API**. Browse the entire Mushaf, search by Surah/Ayah, read translations, view tafsīr, play recitations, bookmark favorites, track your memorization, and switch between light/dark themes—all in one place.
+A fully-featured, responsive Quran web app built using **Next.js 13 (App Router)**, **TypeScript**, and **Tailwind CSS**. This modern Islamic platform includes Quran reading with translation and tafsir, audio recitation, OCR image recognition, audio transcription, **Kids Mode**, search, bookmarks, memorization tracking, and more — all built with love for Muslims around the world.
 
 ---
 
-### 🔎 Table of Contents
+## 🚀 Features Overview
 
-1. [Features](#features)
-2. [Tech Stack](#tech-stack)
-3. [Getting Started](#getting-started)
-
-   * [Prerequisites](#prerequisites)
-   * [Installation](#installation)
-   * [Environment Variables](#environment-variables)
-   * [Running Locally](#running-locally)
-4. [Project Structure](#project-structure)
-5. [Core Components](#core-components)
-6. [Deployment](#deployment)
-7. [Contributing](#contributing)
-8. [License](#license)
-
----
-
-### 🎯 Features
-
-* **Complete Quran Text**: Navigate all 114 Surahs and their Ayahs.
-* **Surah/Ayah Routing**: Dynamic Next.js routes for every Surah and Ayah.
-* **Translations**: Multi-language translations (English, Urdu, etc.).
-* **Tafsīr**: View classic tafsīr (e.g. Ibn Kathir) alongside the text.
-* **Audio Recitation**: Stream recitations from multiple Qāri’ voices with a custom audio player.
-* **Search**: Full-text search across Quran text and translations.
-* **Bookmarks & Notes**: Bookmark your favorite Ayahs and add personal notes.
-* **Memorization Tracker**: Mark Ayahs as “memorized” and track your progress.
-* **Dark & Light Themes**: Seamless toggle with Tailwind’s dark mode.
-* **Responsive**: Mobile-first design that adapts to any screen size.
-* **Performance**: Static generation & ISR for lightning-fast page loads.
+✅ **Full Quran Reader**
+✅ **Multi-language Translations** (English, Urdu, etc.)
+✅ **Tafsir Viewer** (e.g., Ibn Kathir)
+✅ **Audio Recitations** by famous Qaris
+✅ **Ayah-by-Ayah Playback**
+✅ **Audio Transcription API** – Get text from Quranic audio
+✅ **Quran OCR Recognition API** – Extract verses from image uploads
+✅ **Search** Surahs, Ayahs & keywords
+✅ **Bookmark System**
+✅ **Memorization Progress Tracker**
+✅ **Theme Toggle** – Dark & Light modes
+✅ **Kids Mode** – Child-friendly interface with simpler design and engaging UX
+✅ **Responsive UI** – Mobile & desktop optimized
+✅ **Built with TypeScript** and reusable components
 
 ---
 
-### 🛠 Tech Stack
+## 🧠 Unique Functionalities
 
-* **Framework**: Next.js 13 (App Router)
+### 🧠 Quran OCR Recognition
+
+Upload any image containing Quranic text, and the app will recognize and return the corresponding Arabic verse using a custom **OCR engine** connected via API.
+
+### 🔊 Audio Transcription
+
+Record or upload a Quranic recitation, and the app transcribes it to Arabic text. Helpful for recitation verification, Tajweed learners, or accessibility.
+
+### 🎈 Kids Mode
+
+A simplified, colorful, and engaging reading experience specially designed for children:
+
+* Easy navigation
+* Bigger fonts
+* Friendly interface
+* Safe content only
+  Helps introduce young users to the Quran with fun and ease.
+
+---
+
+## 🛠 Tech Stack
+
+* **Framework**: Next.js 13 (App Directory)
 * **Language**: TypeScript
 * **Styling**: Tailwind CSS
-* **State Management**: React Context & custom hooks
-* **Data Fetching**: `fetch` + Next.js `app/` data fetching (static & dynamic routes)
-* **API**: AlQuran Cloud ([https://alquran.cloud/](https://alquran.cloud/))
-* **Audio**: HTML5 Audio + custom React AudioPlayer component
-* **Linting & Formatting**: ESLint, Prettier
+* **APIs**:
+
+  * [AlQuran Cloud API](https://alquran.cloud) for Quran data
+  * Custom OCR & Transcription APIs
+* **State**: React Hooks & Context API
+* **Audio**: Native HTML5 + Custom Controls
+* **Deployment**: Fully portable for Node.js environments
 
 ---
 
-### 🚀 Getting Started
+## 🧾 Project Structure
 
-#### Prerequisites
+```
+📁 app/                 # Next.js App router
+  ├── page.tsx         # Home Page
+  ├── layout.tsx       # Root layout & global styling
+  └── surah/[id]/      # Dynamic Surah pages
 
-* **Node.js** ≥ 18
-* **pnpm** or **npm**
+📁 components/          # All reusable UI components
+  ├── AudioPlayer.tsx
+  ├── BookmarkButton.tsx
+  ├── OCRUploader.tsx
+  ├── Transcriber.tsx
+  └── KidsModeCard.tsx
 
-#### Installation
+📁 lib/                 # Quran data and utilities
+📁 hooks/               # Custom hooks
+📁 public/              # Static assets
+📁 styles/              # Global CSS / Tailwind
+📁 pages/api/           # API routes for OCR & Audio
 
-```bash
-# Clone the repo
-git clone https://github.com/your-username/Quran-App-All-in-one.git
-cd Quran-App-All-in-one
-
-# Install dependencies
-pnpm install   # or `npm install`
+📝 tsconfig.json
+📝 next.config.mjs
+📝 tailwind.config.ts
+📝 .eslintrc.cjs
 ```
 
-#### Environment Variables
+---
 
-Create a `.env.local` in the root and add your API endpoint (optional: you can use the public AlQuran Cloud by default):
+## 📦 Installation
 
-```dotenv
+### 📋 Prerequisites
+
+* Node.js ≥ 18
+* pnpm or npm
+
+### 🔧 Setup
+
+```bash
+git clone https://github.com/zainibaloch/Quran-App---All-in-one
+pnpm install  # or npm install
+```
+
+### 🌐 Environment Variables
+
+Create a `.env.local` file and configure:
+
+```env
 NEXT_PUBLIC_QURAN_API=https://api.alquran.cloud/v1
-# (Optional) If you have a custom endpoint/key, add it here
+OCR_API_URL= local
+TRANSCRIBE_API_URL= local
 ```
 
-#### Running Locally
+###  Run
 
 ```bash
-# Start dev server
-pnpm dev      # or `npm run dev`
-
-# Build for production
-pnpm build    # or `npm run build`
-
-# Preview production build
-pnpm start    # or `npm run start`
-```
-
-Now open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-### 📁 Project Structure
-
-```
-/
-├── app/                   # Next.js App-Router pages & layouts
-│   ├── layout.tsx         # Global app layout (header, theme toggle)
-│   ├── page.tsx           # Home / Surah list
-│   └── surah/
-│       └── [id]/page.tsx  # Dynamic Surah + Ayah pages
-├── components/            # Reusable React components
-│   ├── AudioPlayer.tsx
-│   ├── SearchBar.tsx
-│   ├── BookmarkButton.tsx
-│   ├── ThemeSwitcher.tsx
-│   └── …                  
-├── hooks/                 # Custom React hooks
-│   └── useBookmarks.ts
-├── lib/                   # API wrappers & utilities
-│   └── quranApi.ts        # fetchSurah, fetchTafsir, fetchTranslation
-├── public/                # Static assets (icons, fonts)
-│   └── images/
-├── styles/                # Tailwind overrides & globals
-│   └── globals.css
-├── .eslintrc.cjs
-├── next.config.mjs
-├── tailwind.config.ts
-├── tsconfig.json
-├── package.json
-└── README.md              # ← You are here
+pnpm dev      # Dev server
+pnpm build    # Production build
+pnpm start    # Start prod server
 ```
 
 ---
 
-### 💡 Core Components
+## 🧪 Key Components
 
-* **`AudioPlayer`**
-  Custom hook + component for play/pause/seeking with progress bar.
+* `AudioPlayer.tsx`: Stream & control recitation per Ayah.
+* `OCRUploader.tsx`: Upload image → get Ayah text.
+* `Transcriber.tsx`: Upload audio → get transcription.
+* `SearchBar.tsx`: Global intelligent search.
+* `BookmarkButton.tsx`: Save your favorite Ayahs.
+* `KidsModeCard.tsx`: Entry point to the fun & safe Kids Mode.
 
-* **`SearchBar`**
-  Debounced full-text search over in-memory Surah data.
+---
 
-* **`BookmarkButton`**
-  Toggle bookmark state in `localStorage`, sync with UI.
+## 📱 Deployment
 
-* **`ThemeSwitcher`**
-  Tailwind-powered dark/light toggle with OS-preference detection.
+You can deploy this app on any platform that supports Node.js (like Railway, Render, Heroku, etc.).
 
+```bash
+pnpm build
+pnpm start
+```
 
-### 📦 Deployment
+---
 
-This app is framework-agnostic and can be deployed to any Node.js-capable host:
+## ❤️ Contribute
 
-1. Build the app: `pnpm build`
-2. Serve the build: `pnpm start`
-3. Ensure your host passes through environment variables to `NEXT_PUBLIC_QURAN_API`.
+Pull requests are welcome! Here's how:
 
-
-### 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/YourFeature`
-3. Commit your changes: `git commit -m 'Add YourFeature'`
-4. Push to the branch: `git push origin feature/YourFeature`
-5. Open a Pull Request and describe your changes
+```bash
+git checkout -b feature/MyNewFeature
+git commit -m "Add new feature"
+git push origin feature/MyNewFeature
+```
