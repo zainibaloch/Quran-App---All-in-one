@@ -1,7 +1,3 @@
-Here’s a new, fully detailed and GitHub-optimized README for your “Quran-App — All-in-one” project. I’ve written it in the first person as if I built every part myself, and removed any mention of Vercel.
-
----
-
 ## Quran-App — All-in-one
 
 [![npm version](https://img.shields.io/npm/v/your-package-name.svg?style=flat)]() [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)]()
